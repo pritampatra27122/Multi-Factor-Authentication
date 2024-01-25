@@ -1,0 +1,98 @@
+function level1auth():
+    user inputs the pattern
+    if entered pattern == pattern stored in database:
+        print "Level - 1 verification successful"
+        level2colorpixels()
+    else:
+        print "Incorrect Pattern!"
+        error++
+        while(error < 3)
+           user inputs the pattern
+            if entered pattern == pattern stored in database:
+                print "Level - 1 verification successful"
+                level2colorpixels()
+            else:
+                error++
+        if error == 3:
+            print "Too many incorrect attempts!"
+            if forgot_password:
+                forgotPassword()
+        else:
+            request timeout
+
+
+function level2colorpixels():
+    if choice == pattern:
+        user inputs the pattern
+        if entered pattern == pattern stored in database:
+        print "Level - 2 verification successful"
+        level3OTP()
+        else:
+            print "Incorrect Selection!"
+            error++
+            while(error < 3)
+               user inputs the pattern
+                if entered pattern == pattern stored in database:
+                    print "Level - 2 verification successful"
+                    level3OTP()
+                else:
+                    error++
+            if error == 3:
+                print "Too many incorrect attempts!"
+                if forgot_password:
+                    forgotPassword()
+            else:
+                request timeout
+    if choice == pixels:
+        user inputs the pixel
+        if entered pixel == pixel stored in database:
+        print "Level - 2 verification successful"
+        level3OTP()
+        else:
+            print "Incorrect Selection!"
+            error++
+            while(error < 3)
+              user inputs the pixel
+                if entered pixel == pixel stored in database:
+                    print "Level - 2 verification successful"
+                    level3OTP()
+                else:
+                    error++
+            if error == 3:
+                print "Too many incorrect attempts!"
+                if forgot_password:
+                    forgotPassword()
+            else:
+                request timeout
+
+
+function level3OTP():
+    if noOfOTP > 3:
+        print "Too many OTP attempts. Try again Later"
+        return
+
+    sent_otp = autoOTPgen()
+    user inputs otp
+    if entered_otp == sent_otp:
+        print "Level - 3 verification successful"
+        login()
+    elif resend_otp:
+        noOfOTP++
+        level3OTP()
+    else:
+        print "Incorrect OTP!"
+        error++
+        while(error < 3)
+          user inputs the OTP
+           if entered OTP == sent_otp:
+                print "Level - 3 verification successful"
+                login()
+            else:
+                print "Incorrect OTP!"
+                error++
+        if error == 3:
+            print "Too many incorrect attempts!"
+            if forgot_password:
+                forgotPassword()
+        else:
+            request timeout

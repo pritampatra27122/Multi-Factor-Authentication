@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, 
+        initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="/static/CSS/homepage.css" />
+
+    <title>Register Page</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>THREE LEVEL AUTHENTICATION SYSTEM</h1>
+    </header>
+
+    <div class="container mt-4 mb-0" style="width: 450px">
+      {% if messages %} {% for message in messages %}
+      <p
+        {%
+        if
+        message.tags
+        %}
+        class="alert alert-{{message.tags}} mb-4"
+        {%
+        endif
+        %}
+        align="center"
+      >
+        {{message}}
+      </p>
+      {% endfor %} {% endif %} {% if msg %}
+      <div
+        class="alert alert-danger alert-dismissible d-flex align-items-center fade show"
+      >
+        <i class="bi-exclamation-octagon-fill"></i>
+        <strong class="mx-2">Error!</strong>{{msg}}
+      </div>
+      {% endif %}
+    </div>
+
+    <form action="" method="post" novalidate class="shadow p-5">
+      {% csrf_token %}
+      <section class="vh-100 gradient-custom">
+        <div class="container mt-0 h-100">
+          <div
+            class="row d-flex justify-content-center align-items-center h-100"
+          >
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+              <div class="card bg-light text-black" style="border-radius: 1rem">
+                <div class="card-body p-5 text-center">
+                  <div class="mb-md-5 pb-2">
+                    <h2 class="fw-bold mb-2 text-uppercase">
+                      <b>LEVEL-1 REGISTRATION</b>
+                    </h2>
+                    <p class="text-white-50">
+                      Enter Your Email and Password to Register
+                    </p>
+
+                    {% for fm in form %}
+                    <!-- adad -->
+                    {% if fm.label == "Position of Image 1" %}
+                    <h2 class="fw-bold mb-2 mt-5 text-uppercase">
+                      <b>LEVEL-2 REGISTRATION</b>
+                    </h2>
+                    <p class="text-white-50 mb-3">
+                      Select Three Images and Enter the Sequence Numbers
+                      starting from 1 to 9
+                    </p>
+                    <!-- adad -->
+                    {% for image in images %}
+                    <img src="{{image}}" width="100" height="100" />
+                    {% endfor %}
+                    <!-- adad -->
+                    {% endif %}
+                    <div class="form-outline form-white mb-4">
+                      <label class="form-label mt-3">{{fm.label}}</label>{{fm}}
+                    </div>
+                    {% endfor %}
+                    <button class="btn btn-dark btn-lg px-5 mt-3" type="submit">
+                      Register User
+                    </button>
+                  </div>
+                  <div>
+                    <p class="mb-0">Don't have an account?</p>
+                    <p>
+                      <a href="{% url 'login' %}" class="text-white-50 fw-bold"
+                        >Login Now</a
+                      ><br />
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </form>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
